@@ -1,0 +1,43 @@
+#to search for a specific class in jars
+find . -name "*.jar" | xargs grep test.class
+
+#print list of single depth subdirectories sorted by how much disk usage they are taking, #biggest at bottom
+du -h --max-depth=1 |sort -h
+
+#get info of a process using a prot
+netstat -tulpn
+
+#details of an executable for a process
+ls -l /proc/<proc id>/exe
+
+#find process pid that opened a specific port
+fuser <port no>/tcp
+
+#check memory
+free -m
+
+#check local disk
+df -t local
+
+#check #cpu’s
+cat /proc/cpuinfo | grep processor | wc -l
+
+#change color of dir listing
+LS_COLORS=’di=0;35’; export LS_COLORS
+#try diff numbers (34, 32 etc) for difference colors
+
+#find file named StringBuffer in all *.java files
+find . -type f -name “*.java” -exec grep -l StringBuffer {} \;
+
+#search foo.txt under current dir recursively 
+find . -name foo.txt
+
+#find a specific string (example: “xyz”) in all *.txt files; exec is executing the grep #command on each of the results from find; \ tells where to end each result; {} is #telling exec to take the complete line
+find . -type f -name “*.txt” -exec grep -l ‘xyz’ {} \;
+
+#find a specific string (example: “xyz”) in all *.txt files (same as above)
+grep -iw -H -R ‘xyz’ -include=*.txt .  
+
+#find a specific string (example: “xyz”) in all file with “test” in filename
+grep -iw -H -R ‘xyz’ -include=*test* .
+
