@@ -19,25 +19,31 @@ free -m
 #check local disk
 df -t local
 
-#check #cpuís
+#check #cpu‚Äôs
 cat /proc/cpuinfo | grep processor | wc -l
 
 #change color of dir listing
-LS_COLORS=ídi=0;35í; export LS_COLORS
+LS_COLORS=‚Äôdi=0;35‚Äô; export LS_COLORS
 #try diff numbers (34, 32 etc) for difference colors
 
 #find file named StringBuffer in all *.java files
-find . -type f -name ì*.javaî -exec grep -l StringBuffer {} \;
+find . -type f -name ‚Äú*.java‚Äù -exec grep -l StringBuffer {} \;
 
 #search foo.txt under current dir recursively 
 find . -name foo.txt
 
-#find a specific string (example: ìxyzî) in all *.txt files; exec is executing the grep #command on each of the results from find; \ tells where to end each result; {} is #telling exec to take the complete line
-find . -type f -name ì*.txtî -exec grep -l ëxyzí {} \;
+#find a specific string (example: ‚Äúxyz‚Äù) in all *.txt files; exec is executing the grep #command on each of the results from find; \ tells where to end each result; {} is #telling exec to take the complete line
+find . -type f -name ‚Äú*.txt‚Äù -exec grep -l ‚Äòxyz‚Äô {} \;
 
-#find a specific string (example: ìxyzî) in all *.txt files (same as above)
-grep -iw -H -R ëxyzí -include=*.txt .  
+#find a specific string (example: ‚Äúxyz‚Äù) in all *.txt files (same as above)
+grep -iw -H -R ‚Äòxyz‚Äô -include=*.txt .  
 
-#find a specific string (example: ìxyzî) in all file with ìtestî in filename
-grep -iw -H -R ëxyzí -include=*test* .
+#compress all files in a folder
+zip -r folder.zip folder
+
+#to dynamically set JAVA_HOME on linux
+export JAVA_HOME=$(readlink -f $(which java) | sed "s:/bin/java::")
+
+#find a specific string (example: ‚Äúxyz‚Äù) in all file with ‚Äútest‚Äù in filename
+grep -iw -H -R ‚Äòxyz‚Äô -include=*test* .
 
